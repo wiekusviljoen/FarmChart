@@ -1,0 +1,114 @@
+﻿@model Farm.Models.Cattle
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Cattle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DateAndTime" class="control-label"></label>
+                <input asp-for="DateAndTime" class="form-control" />
+                <span asp-validation-for="DateAndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Camp" class="control-label"></label>
+                <input asp-for="Camp" class="form-control" />
+                <span asp-validation-for="Camp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Breed" class="control-label"></label>
+                <input asp-for="Breed" class="form-control" />
+                <span asp-validation-for="Breed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bulls" class="control-label"></label>
+                <input asp-for="Bulls" class="form-control" />
+                <span asp-validation-for="Bulls" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cows" class="control-label"></label>
+                <input asp-for="Cows" class="form-control" />
+                <span asp-validation-for="Cows" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BullCalf" class="control-label"></label>
+                <input asp-for="BullCalf" class="form-control" />
+                <span asp-validation-for="BullCalf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CowCalf" class="control-label"></label>
+                <input asp-for="CowCalf" class="form-control" />
+                <span asp-validation-for="CowCalf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewCalf" class="control-label"></label>
+                <input asp-for="NewCalf" class="form-control" />
+                <span asp-validation-for="NewCalf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Missing" class="control-label"></label>
+                <input asp-for="Missing" class="form-control" />
+                <span asp-validation-for="Missing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dead" class="control-label"></label>
+                <input asp-for="Dead" class="form-control" />
+                <span asp-validation-for="Dead" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Branded" /> @Html.DisplayNameFor(model => model.Branded)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Dipped" /> @Html.DisplayNameFor(model => model.Dipped)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Injected" /> @Html.DisplayNameFor(model => model.Injected)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Feed" class="control-label"></label>
+                <input asp-for="Feed" class="form-control" />
+                <span asp-validation-for="Feed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedPrice" class="control-label"></label>
+                <input asp-for="FeedPrice" class="form-control" />
+                <span asp-validation-for="FeedPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeedQuantity" class="control-label"></label>
+                <input asp-for="FeedQuantity" class="form-control" />
+                <span asp-validation-for="FeedQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,123 @@
+﻿@model Farm.Models.Cattle
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cattle</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateAndTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateAndTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Camp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Camp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Breed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Breed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Bulls)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Bulls)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cows)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cows)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BullCalf)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BullCalf)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CowCalf)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CowCalf)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NewCalf)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NewCalf)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Missing)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Missing)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dead)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dead)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Branded)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Branded)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Dipped)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Dipped)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Injected)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Injected)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Feed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Feed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FeedPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedQuantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FeedQuantity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

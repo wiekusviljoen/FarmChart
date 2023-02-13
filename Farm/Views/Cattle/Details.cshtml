@@ -1,0 +1,190 @@
+﻿@model Farm.Models.Cattle
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CattleModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateAndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateAndTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Camp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Camp)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Breed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Breed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bulls)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bulls)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cows)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Cows)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BullCalf)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BullCalf)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CowCalf)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CowCalf)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NewCalf)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NewCalf)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Missing)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Missing)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dead)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dead)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Branded)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Branded)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dipped)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dipped)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Injected)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Injected)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Feed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Feed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FeedPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedQuantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FeedQuantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedTotal)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FeedTotal)kg
+        </dd>
+
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PriceOfFeedTotal)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PriceOfFeedTotal)
+        </dd>
+
+
+
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedPricePerWeek)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FeedPricePerWeek)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FeedPricePerMonth)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FeedPricePerMonth)
+        </dd>
+
+        <dt>
+            @{
+                var date = DateTime.Now.Date.Subtract(Model.DateAndTime);
+
+                @Html.DisplayName("Days ago")
+            }
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => date.Days) Days and
+            @Html.DisplayFor(model => date.Hours) Hours ago
+
+        </dd>
+
+
+
+
+
+
+
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
