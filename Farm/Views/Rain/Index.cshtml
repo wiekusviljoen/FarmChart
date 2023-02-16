@@ -14,6 +14,7 @@
     <select id="ChartType" class="form-control" style="width:150px;">
         <option selected>--Select Chart Type--</option>
         <option>bar</option>
+        <option>polarArea</option>
         <option>line</option>
         <option>pie</option>
         <option>doughnut</option>
@@ -67,10 +68,13 @@
                     {
                         type: chartType,
                         data: {
+                           
                             labels: _chartLabels,
                             datasets: [{
-                                backgroundColor: barColor,
+                                label: "My First Entry",
                                 data: _chartData,
+                                backgroundColor: barColor,
+                                
                                 
                             }]
                             
@@ -134,5 +138,5 @@
 </table>
 
 <dt class="col-sm-2">
-    Total: @Model.Sum(i=>i.Amount)
+    Total: @Model.Sum(i=>i.Amount)mm
 </dt>
