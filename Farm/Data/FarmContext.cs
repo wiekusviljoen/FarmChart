@@ -15,5 +15,7 @@ namespace Farm.Data
         }
 
         public DbSet<Farm.Models.Cattle> Cattle { get; set; } = default!;
+
+        public DbSet<Farm.Models.RainModel> RainModel { get; set; } = default!;
     }
 }
