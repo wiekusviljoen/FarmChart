@@ -32,6 +32,7 @@ namespace Farm.Controllers
 
             data.Add(labels);
 
+
             List<double> RainAmount = _context.RainModel.Select(p => p.Amount).ToList();
 
             data.Add(RainAmount);
