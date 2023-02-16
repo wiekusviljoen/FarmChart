@@ -32,11 +32,11 @@ namespace Farm.Controllers
 
             data.Add(labels);
 
-            List<double> SalesNumber = _context.RainModel.Select(p => p.Amount).ToList();
+            List<double> RainAmount = _context.RainModel.Select(p => p.Amount).ToList();
 
-            data.Add(SalesNumber);
+            data.Add(RainAmount);
 
-          
+           
 
             return data;
         }
