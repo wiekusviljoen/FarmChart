@@ -71,7 +71,7 @@
                            
                             labels: _chartLabels,
                             datasets: [{
-                                label: "My First Entry",
+                                label: "Rain",
                                 data: _chartData,
                                 backgroundColor: barColor,
                                 
@@ -90,6 +90,16 @@
     })
 
 </script>
+
+<br />
+
+<dt class="col-sm-20">
+    Total Rain: @Model.Sum(i=>i.Amount)mm
+    <br />
+    Average Rain: @Model.Average(i=>i.Amount)mm
+</dt>
+
+<br/>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -137,6 +147,3 @@
 
 </table>
 
-<dt class="col-sm-2">
-    Total: @Model.Sum(i=>i.Amount)mm
-</dt>

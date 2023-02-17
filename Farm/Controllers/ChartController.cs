@@ -38,5 +38,21 @@ namespace Farm.Controllers
 
             return data;
         }
+
+
+        public List<object> GetCattleCosts()
+        {
+            List<object> data = new List<object>();
+
+            List<string> labels = _context.Cattle.Select(p => p.Camp).ToList();
+
+            data.Add(labels);
+
+            List<double> SalesNumber = _context.Cattle.Select(p => p.FeedPricePerMonth).ToList();
+
+            data.Add(SalesNumber);
+
+            return data;
+        }
     }
 }

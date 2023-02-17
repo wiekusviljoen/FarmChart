@@ -15,10 +15,11 @@
     <div class="col-2">
         <select id="ChartType" class="form-control" style="width:150px;">
             <option selected>--Select Chart Type--</option>
-            <option>bar</option>
-            <option>line</option>
-            <option>pie</option>
-            <option>doughnut</option>
+        <option>bar</option>
+        <option>polarArea</option>
+        <option>line</option>
+        <option>pie</option>
+        <option>doughnut</option>
         </select>
 
     </div>
@@ -70,6 +71,7 @@
                             data: {
                                 labels: _chartLabels,
                                 datasets: [{
+                                label: "Cattle",
                                     backgroundColor: barColor,
                                     data: _chartData
                                 }]
@@ -85,6 +87,9 @@
         })
 
     </script>
+
+
+
 
 
 <p>
