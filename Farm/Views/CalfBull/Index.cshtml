@@ -1,0 +1,83 @@
+﻿<h1>Bull Calves</h1>
+
+
+
+<div class="row">
+    <lable>Chart-Type</lable>
+
+</div>
+<div class="col-2">
+    <select id="ChartType" class="form-control" style="width:150px;">
+        <option selected>--Select Chart Type--</option>
+        <option>bar</option>
+        <option>polarArea</option>
+        <option>line</option>
+        <option>pie</option>
+        <option>doughnut</option>
+    </select>
+
+</div>
+<div class="col-4">
+    <input id="ID" value="Show Graph" type="button" />
+</div>
+<br />
+
+<div id="ChartView">
+    <canvas id="myChart"></canvas>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $("#ID").click(function () {
+
+            var chartType = $("#ChartType").val();
+            var chartView = document.getElementById('ChartView');
+
+            chartView.innerHTML = `&nbsp;`;
+            $('#ChartView').append('<canvas id="myChart" style="max-width:650px;max-height:300px;"><canvas>');
+
+            $.ajax({
+                type: "POST",
+                url: "/CalfBull/GetCattleCalfBull",
+                data: "",
+                contextType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccessResult,
+                // error: Onerror
+            })
+            function OnSuccessResult(data) {
+                var _data = data;
+                var _chartLabels = _data[0];
+                var _chartData = _data[1];
+
+
+
+                var barColor = ["red", "green", "blue", "orange", "brown", "purple", "yellow", "pink"]
+
+                new Chart("myChart",
+
+                    {
+                        type: chartType,
+                        data: {
+                            labels: _chartLabels,
+                            datasets: [{
+                                label: "Bull Calves",
+                                backgroundColor: barColor,
+                                data: _chartData
+                            }]
+                        }
+
+                    })
+            }
+
+            //function OnError(err) {
+
+            //}
+        })
+    })
+
+</script>
