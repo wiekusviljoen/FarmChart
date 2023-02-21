@@ -31,7 +31,7 @@
 
 </nav>
 
-<h1>Bull Calves</h1>
+<h1>Deaths</h1>
 
 
 
@@ -75,7 +75,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/CalfBull/GetCattleCalfBull",
+                url: "/Death/GetCattleDeath",
                 data: "",
                 contextType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -98,7 +98,7 @@
                         data: {
                             labels: _chartLabels,
                             datasets: [{
-                                label: "Bull Calves",
+                                label: "Deaths",
                                 backgroundColor: barColor,
                                 data: _chartData
                             }]
@@ -114,3 +114,4 @@
     })
 
 </script>
+
