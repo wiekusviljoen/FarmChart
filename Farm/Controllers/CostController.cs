@@ -3,28 +3,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Farm.Controllers
 {
-    public class CattleChartController : Controller
+    public class CostController : Controller
     {
         private readonly FarmContext _context;
 
-        public CattleChartController(FarmContext context)
+        public CostController(FarmContext context)
         {
             _context = context;
         }
+
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult ShowCattle()
-        {
-            return View();
-        }
 
-        [HttpPost]
-
-        public List<object> GetCattle()
+        public List<object> GetCattleCosts()
         {
             List<object> data = new List<object>();
 
@@ -32,16 +27,11 @@ namespace Farm.Controllers
 
             data.Add(labels);
 
-            List<int> SalesNumber = _context.Cattle.Select(p => p.Total).ToList();
+            List<double> SalesNumber = _context.Cattle.Select(p => p.FeedPricePerMonth).ToList();
 
             data.Add(SalesNumber);
 
             return data;
         }
-
-
-        
-
-
     }
 }

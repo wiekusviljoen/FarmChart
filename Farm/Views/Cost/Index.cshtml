@@ -1,7 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>Feed Costs per Month</h1>
+﻿<h1>Feed Costs per Month</h1>
 
 <div class="row">
     <lable>Feed Costs</lable>
@@ -43,7 +40,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/CattleChart/GetCattleCosts",
+                url: "/Cost/GetCattleCosts",
                 data: "",
                 contextType: "application/json; charset=utf-8",
                 dataType: "json",
