@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Farm.Controllers
 {
-    public class ChartController : Controller
+    public class CattleChartController : Controller
     {
         private readonly FarmContext _context;
 
-        public ChartController(FarmContext context)
+        public CattleChartController(FarmContext context)
         {
             _context = context;
         }
