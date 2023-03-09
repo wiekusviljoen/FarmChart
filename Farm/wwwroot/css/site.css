@@ -17,8 +17,15 @@ html {
   min-height: 100%;
 }
 
+/*.body1 {
+    max-block-size:fit-content;
+    background-size: cover;
+    background-image: url('https://www.heinonwine.com/wp-content/uploads/2020/10/agriculture.jpg');
+}*/
+
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    
 }
 
 .nav-item1{

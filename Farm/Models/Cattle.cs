@@ -168,5 +168,9 @@ namespace Farm.Models
             get { return FeedPricePerWeek * 4; }
         }
 
+       
+
     }
+
+    
 }
