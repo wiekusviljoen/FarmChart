@@ -27,6 +27,8 @@ namespace Farm.Controllers
                           Problem("Entity set 'FarmContext.Cattle'  is null.");
         }
 
+       
+
         // GET: Cattle/Details/5
         public async Task<IActionResult> Details(int? id)
         {

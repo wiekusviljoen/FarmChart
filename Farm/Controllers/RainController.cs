@@ -27,6 +27,14 @@ namespace Farm.Controllers
                           Problem("Entity set 'FarmContext.RainModel'  is null.");
         }
 
+        //GET: ShowSearch
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return View();
+        }
+
+
+
         // GET: Rain/Details/5
         public async Task<IActionResult> Details(int? id)
         {
