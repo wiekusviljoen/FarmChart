@@ -40,7 +40,7 @@ namespace Farm.Controllers
 
         }
 
-        //GET: ShowSearchFormCamp
+        //GET: ShowSearchFormBreed
         public async Task<IActionResult> ShowSearchFormBreed()
         {
             return View();
@@ -51,6 +51,19 @@ namespace Farm.Controllers
             return View("Index", await _context.Cattle.Where(j => j.Breed.Contains(SearchPhrase)).ToListAsync());
 
         }
+
+
+        ////GET: ShowSearchFormYear
+        //public async Task<IActionResult> ShowSearchFormYear()
+        //{
+        //    return View();
+        //}
+
+        //public async Task<IActionResult> ShowSearchResultsYear(DateTime SearchPhrase)
+        //{
+        //    return View("Index", await _context.Cattle.Where(i => i.DateAndTime.Year(SearchPhrase)).ToListAsync());
+
+        //}
 
         // GET: Cattle/Details/5
         public async Task<IActionResult> Details(int? id)
