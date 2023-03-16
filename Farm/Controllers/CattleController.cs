@@ -27,16 +27,28 @@ namespace Farm.Controllers
                           Problem("Entity set 'FarmContext.Cattle'  is null.");
         }
 
-        //GET: ShowSearchForm
+        //GET: ShowSearchFormCamp
         public async Task<IActionResult> ShowSearchForm()
         {
             return View();
         }
 
         //Post: ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        public async Task<IActionResult> ShowSearchResultsCamp(String SearchPhrase)
         {
             return View("Index", await _context.Cattle.Where(j => j.Camp.Contains(SearchPhrase)).ToListAsync());
+
+        }
+
+        //GET: ShowSearchFormCamp
+        public async Task<IActionResult> ShowSearchFormBreed()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ShowSearchResultsBreed(String SearchPhrase)
+        {
+            return View("Index", await _context.Cattle.Where(j => j.Breed.Contains(SearchPhrase)).ToListAsync());
 
         }
 

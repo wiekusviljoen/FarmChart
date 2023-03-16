@@ -9,6 +9,11 @@
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom border-top box-shadow mb-5">
 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
     <ul class="navbar-nav flex-grow-1">
+
+            <li class="nav-item1 ">
+                <a class="nav-link text-dark" asp-area="" asp-controller="CattleChart" asp-action="Index">Cattle Chart</a>
+            </li>
+
 <li class="nav-item1 ">
     <a class="nav-link text-dark" asp-area="" asp-controller="Bull" asp-action="Index">Bull Chart</a>
 </li>
@@ -43,95 +48,17 @@
     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
         <ul class="navbar-nav flex-grow-1">
             <li class="nav-item1 ">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Cattle" asp-action="ShowSearchForm">Search</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Cattle" asp-action="ShowSearchForm">Search Camp</a>
+            </li>
+
+            <li class="nav-item1 ">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Cattle" asp-action="ShowSearchFormBreed">Search Breed</a>
             </li>
 
         </ul>
     </div>
 
 </nav>
-
-<div class="row">
-        <lable>Chart-Type</lable>
-
-    </div>
-    <div class="col-2">
-        <select id="ChartType" class="form-control" style="width:150px;">
-            <option selected>--Select Chart Type--</option>
-        <option>bar</option>
-        <option>polarArea</option>
-        <option>line</option>
-        <option>pie</option>
-        <option>doughnut</option>
-        </select>
-
-    </div>
-    <div class="col-4">
-        <input id="ID" value="Show Graph" type="button" />
-    </div>
-    <br />
-
-    <div id="ChartView">
-        <canvas id="myChart"></canvas>
-    </div>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="text/javascript">
-
-        $(function () {
-            $("#ID").click(function () {
-
-                var chartType = $("#ChartType").val();
-                var chartView = document.getElementById('ChartView');
-
-                chartView.innerHTML = `&nbsp;`;
-                $('#ChartView').append('<canvas id="myChart" style="max-width:650px;max-height:300px;"><canvas>');
-
-                $.ajax({
-                    type: "POST",
-                    url: "/CattleChart/GetCattle",
-                    data: "",
-                    contextType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: OnSuccessResult,
-                    // error: Onerror
-                })
-                function OnSuccessResult(data) {
-                    var _data = data;
-                    var _chartLabels = _data[0];
-                    var _chartData = _data[1];
-
-
-
-                    var barColor = ["red", "green", "blue", "orange", "brown", "purple","yellow","pink"]
-
-                    new Chart("myChart",
-
-                        {
-                            type: chartType,
-                            data: {
-                                labels: _chartLabels,
-                                datasets: [{
-                                label: "Cattle",
-                                    backgroundColor: barColor,
-                                    data: _chartData
-                                }]
-                            }
-
-                        })
-                }
-
-                //function OnError(err) {
-
-                //}
-            })
-        })
-
-    </script>
-
-
 
 
 
