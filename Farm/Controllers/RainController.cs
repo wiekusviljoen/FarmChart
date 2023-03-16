@@ -27,10 +27,17 @@ namespace Farm.Controllers
                           Problem("Entity set 'FarmContext.RainModel'  is null.");
         }
 
-        //GET: ShowSearch
+        //GET: ShowSearchForm
         public async Task<IActionResult> ShowSearchForm()
         {
             return View();
+        }
+
+        //Post: ShowSearchResults
+        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        {
+            return View("Index", await _context.RainModel.Where(j => j.Camp.Contains(SearchPhrase)).ToListAsync());
+
         }
 
 
