@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Farm.Data;
 using Farm.Models;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
 
 namespace Farm.Controllers
 {
@@ -36,8 +37,10 @@ namespace Farm.Controllers
         //Post: ShowSearchResults
         public async Task<IActionResult> ShowSearchResultsCamp(String SearchPhrase)
         {
+
             return View("Index", await _context.Cattle.Where(j => j.Camp.Contains(SearchPhrase)).ToListAsync());
 
+           
         }
 
         //GET: ShowSearchFormBreed
