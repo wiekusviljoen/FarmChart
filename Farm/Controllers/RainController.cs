@@ -37,7 +37,7 @@ namespace Farm.Controllers
         public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
         {
             return View("Index", await _context.RainModel.Where(j => j.Camp.Contains(SearchPhrase)).ToListAsync());
-
+            
         }
 
 
