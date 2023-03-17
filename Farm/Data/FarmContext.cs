@@ -9,6 +9,10 @@ namespace Farm.Data
 {
     public class FarmContext : DbContext
     {
+        public FarmContext()
+        {
+        }
+
         public FarmContext (DbContextOptions<FarmContext> options)
             : base(options)
         {
