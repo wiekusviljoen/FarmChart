@@ -13,7 +13,9 @@ namespace Farm.Controllers
             _logger = logger;
         }
 
-        
+        public HomeController()
+        {
+        }
 
         public IActionResult Index()
         {
