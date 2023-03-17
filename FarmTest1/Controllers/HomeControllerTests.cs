@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 
 
-namespace MyWebsite.Tests.Controllers
+namespace HomeControllerTests.Controllers
 {
     public class HomeControllerTests
     {
