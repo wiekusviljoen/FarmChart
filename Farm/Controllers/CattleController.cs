@@ -20,6 +20,10 @@ namespace Farm.Controllers
             _context = context;
         }
 
+        public CattleController()
+        {
+        }
+
         // GET: Cattle
         public async Task<IActionResult> Index()
         {
@@ -89,7 +93,7 @@ namespace Farm.Controllers
         // GET: Cattle/Create
         public IActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: Cattle/Create
