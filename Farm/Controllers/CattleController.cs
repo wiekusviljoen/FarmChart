@@ -204,5 +204,10 @@ namespace Farm.Controllers
         {
           return (_context.Cattle?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+        public ViewResult Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
