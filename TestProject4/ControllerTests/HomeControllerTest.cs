@@ -3,7 +3,7 @@
 using Farm.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TestProject4
+namespace TestProject4.ControllerTests
 {
     [TestClass]
     public class HomeControllerTest
