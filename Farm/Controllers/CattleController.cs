@@ -20,15 +20,14 @@ namespace Farm.Controllers
             _context = context;
         }
 
-        public CattleController()
-        {
-        }
+        
 
+        
         // GET: Cattle
         public async Task<IActionResult> Index()
         {
               return _context.Cattle != null ? 
-                          View(await _context.Cattle.ToListAsync()) :
+                          View("Index",await _context.Cattle.ToListAsync()) :
                           Problem("Entity set 'FarmContext.Cattle'  is null.");
         }
 
@@ -205,9 +204,6 @@ namespace Farm.Controllers
           return (_context.Cattle?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        public ViewResult Delete()
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
