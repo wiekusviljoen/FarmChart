@@ -1,43 +1,38 @@
 ﻿using Farm.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Farm.Controllers
+namespace Farm.Controllers.Charts
 {
-    public class RainChartController : Controller
+    public class DeathController : Controller
     {
         private readonly FarmContext _context;
 
-        public RainChartController(FarmContext context)
+        public DeathController(FarmContext context)
         {
             _context = context;
         }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult ShowRain()
+        public IActionResult ShowCattle()
         {
             return View();
         }
 
         [HttpPost]
 
-        public List<object> GetRain()
+        public List<object> GetCattleDeath()
         {
             List<object> data = new List<object>();
 
-            List<string> labels = _context.RainModel.Select(p => p.Camp).ToList();
-
+            List<string> labels = _context.Cattle.Select(p => p.Camp).ToList();
             data.Add(labels);
 
+            List<int> SalesNumber = _context.Cattle.Select(p => p.Dead).ToList();
 
-            List<double> RainAmount = _context.RainModel.Select(p => p.Amount).ToList();
-
-            data.Add(RainAmount);
-
-           
+            data.Add(SalesNumber);
 
             return data;
         }

@@ -7,172 +7,104 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Farm.Data;
 using Farm.Models;
+using System.Diagnostics;
+using Farm.Interfaces;
 
 namespace Farm.Controllers
 {
     public class RainController : Controller
     {
-        private readonly FarmContext _context;
+        private readonly IRainRepository _rainRepository;
 
-        public RainController(FarmContext context)
+        public RainController(IRainRepository rainRepository)
         {
-            _context = context;
+            _rainRepository = rainRepository;
         }
 
-        // GET: Rain
-        public async Task<IActionResult> Index()
+        [HttpGet]
+        public IActionResult Index()
         {
-              return _context.RainModel != null ? 
-                          View(await _context.RainModel.ToListAsync()) :
-                          Problem("Entity set 'FarmContext.RainModel'  is null.");
+            var rain = _rainRepository.GetAll();
+            return View(rain);
         }
 
-        //GET: ShowSearchForm
-        public async Task<IActionResult> ShowSearchForm()
-        {
-            return View();
-        }
-
-        //Post: ShowSearchResults
-        public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
-        {
-            return View("Index", await _context.RainModel.Where(j => j.Camp.Contains(SearchPhrase)).ToListAsync());
-            
-        }
-
-
-
-        // GET: Rain/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.RainModel == null)
-            {
-                return NotFound();
-            }
-
-            var rainModel = await _context.RainModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (rainModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(rainModel);
-        }
-
-        // GET: Rain/Create
+        [HttpGet]
         public IActionResult Create()
         {
+
             return View();
         }
 
-        // POST: Rain/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Date,Camp,Amount")] RainModel rainModel)
+        public IActionResult Create(RainModel rainModel)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(rainModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(rainModel);
+            _rainRepository.Insert(rainModel);
+            _rainRepository.Save();
+            return RedirectToAction("Index");
         }
 
-        // GET: Rain/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.RainModel == null)
-            {
-                return NotFound();
-            }
 
-            var rainModel = await _context.RainModel.FindAsync(id);
-            if (rainModel == null)
-            {
-                return NotFound();
-            }
-            return View(rainModel);
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var rain = _rainRepository.GetById(id);
+            return View(rain);
         }
 
-        // POST: Rain/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,Camp,Amount")] RainModel rainModel)
+        public IActionResult Delete(RainModel rainModel)
         {
-            if (id != rainModel.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(rainModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RainModelExists(rainModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(rainModel);
+            _rainRepository.Delete(rainModel);
+            _rainRepository.Save();
+            return RedirectToAction("Index");
         }
 
-        // GET: Rain/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+
+        [HttpGet]
+        public IActionResult Details(int id)
         {
-            if (id == null || _context.RainModel == null)
-            {
-                return NotFound();
-            }
-
-            var rainModel = await _context.RainModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (rainModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(rainModel);
+            var rain = _rainRepository.GetById(id);
+            return View(rain);
         }
 
-        // POST: Rain/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [HttpGet]
+        public IActionResult Edit(int id)
         {
-            if (_context.RainModel == null)
-            {
-                return Problem("Entity set 'FarmContext.RainModel'  is null.");
-            }
-            var rainModel = await _context.RainModel.FindAsync(id);
-            if (rainModel != null)
-            {
-                _context.RainModel.Remove(rainModel);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var rain = _rainRepository.GetById(id);
+            return View(rain);
         }
 
-        private bool RainModelExists(int id)
+        [HttpPost]
+        public IActionResult Edit(RainModel rainModel)
         {
-          return (_context.RainModel?.Any(e => e.Id == id)).GetValueOrDefault();
+            _rainRepository.Update(rainModel);
+            _rainRepository.Save();
+            return RedirectToAction("Index");
         }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        //public async Task<IActionResult> ShowSearchForm()
+        //{
+        //    return View();
+        //}
+
+        ////Post: ShowSearchResults
+        //public async Task<IActionResult> ShowSearchResults(String SearchPhrase)
+        //{
+        //    return View("Index", await _context.RainModel.Where(j => j.Camp.Contains(SearchPhrase)).ToListAsync());
+
+        //}
     }
 }

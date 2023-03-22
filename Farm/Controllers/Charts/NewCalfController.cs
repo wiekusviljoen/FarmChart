@@ -1,7 +1,7 @@
 ﻿using Farm.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Farm.Controllers
+namespace Farm.Controllers.Charts
 {
     public class NewCalfController : Controller
     {

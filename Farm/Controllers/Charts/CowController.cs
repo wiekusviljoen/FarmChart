@@ -1,13 +1,13 @@
 ﻿using Farm.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Farm.Controllers
+namespace Farm.Controllers.Charts
 {
-    public class DeathController : Controller
+    public class CowController : Controller
     {
         private readonly FarmContext _context;
 
-        public DeathController(FarmContext context)
+        public CowController(FarmContext context)
         {
             _context = context;
         }
@@ -23,18 +23,20 @@ namespace Farm.Controllers
 
         [HttpPost]
 
-        public List<object> GetCattleDeath()
+        public List<object> GetCattleCow()
         {
             List<object> data = new List<object>();
 
             List<string> labels = _context.Cattle.Select(p => p.Camp).ToList();
             data.Add(labels);
 
-            List<int> SalesNumber = _context.Cattle.Select(p => p.Dead).ToList();
+            List<int> SalesNumber = _context.Cattle.Select(p => p.Cows).ToList();
 
             data.Add(SalesNumber);
 
             return data;
         }
+
+
     }
 }

@@ -1,42 +1,37 @@
 ﻿using Farm.Data;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Farm.Controllers
+namespace Farm.Controllers.Charts
 {
-    public class CowController : Controller
+    public class CostController : Controller
     {
         private readonly FarmContext _context;
 
-        public CowController(FarmContext context)
+        public CostController(FarmContext context)
         {
             _context = context;
         }
+
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult ShowCattle()
-        {
-            return View();
-        }
 
-        [HttpPost]
-
-        public List<object> GetCattleCow()
+        public List<object> GetCattleCosts()
         {
             List<object> data = new List<object>();
 
             List<string> labels = _context.Cattle.Select(p => p.Camp).ToList();
+
             data.Add(labels);
 
-            List<int> SalesNumber = _context.Cattle.Select(p => p.Cows).ToList();
+            List<double> SalesNumber = _context.Cattle.Select(p => p.FeedPricePerMonth).ToList();
 
             data.Add(SalesNumber);
 
             return data;
         }
-        
-
     }
 }
