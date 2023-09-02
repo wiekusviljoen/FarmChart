@@ -81,12 +81,12 @@ namespace Farm.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Feed Price/bag")]
 
-        public double FeedPrice { get; set; }
+        public float FeedPrice { get; set; }
 
         [Required]
         [Display(Name = "Times Fed/week")]
 
-        public double FeedQuantity { get; set; }
+        public float FeedQuantity { get; set; }
 
 
         [Display(Name = "Notes")]
@@ -138,14 +138,14 @@ namespace Farm.Models
 
         [DataType(DataType.Currency)]
         [Display(Name = "Price of Feed per kg")]
-        public double PriceOfBagsTotal
+        public float PriceOfBagsTotal
         {
             get { return FeedPrice / 50; }
         }
 
         [DataType(DataType.Currency)]
         [Display(Name = "Price of Feed per Day")]
-        public double PriceOfFeedTotal
+        public float PriceOfFeedTotal
         {
             get { return PriceOfBagsTotal * FeedTotal; }
         }
@@ -155,7 +155,7 @@ namespace Farm.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Price of Feed/Week")]
 
-        public double FeedPricePerWeek
+        public float FeedPricePerWeek
         {
             get { return PriceOfFeedTotal * FeedQuantity; }
         }
@@ -163,9 +163,9 @@ namespace Farm.Models
         [DataType(DataType.Currency)]
         [Display(Name = "Price of Feed/month")]
 
-        public double FeedPricePerMonth
+        public float FeedPricePerMonth
         {
-            get { return FeedPricePerWeek * 4; }
+            get { return (float)(FeedPricePerWeek * 4.00); }
         }
 
        

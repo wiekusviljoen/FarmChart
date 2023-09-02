@@ -27,7 +27,7 @@ namespace Farm.Controllers.Charts
 
             data.Add(labels);
 
-            List<double> SalesNumber = _context.Cattle.Select(p => p.FeedPricePerMonth).ToList();
+            List<float> SalesNumber = _context.Cattle.Select(p => p.FeedPricePerMonth).ToList();
 
             data.Add(SalesNumber);
 
